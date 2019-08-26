@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class VeteranProvider {
-    public String findVeteranFileNumber(){
+    public String findVeteranFileNumber() {
         return "792647811";
     }
 }

@@ -1,7 +1,6 @@
 import org.assertj.core.api.Assertions;
 import org.fluentlenium.adapter.junit.jupiter.FluentTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 
 public class FirstTest extends FluentTest {

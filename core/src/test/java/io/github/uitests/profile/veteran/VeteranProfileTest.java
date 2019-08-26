@@ -10,9 +10,6 @@ import java.util.Random;
 
 public class VeteranProfileTest extends VeteranProfileBasePageTest {
 
-
-
-
     @Test
     void testUpdateName() {
         final String firstName = "abc";

@@ -1,8 +1,8 @@
 package io.github.uitests.profile.veteran;
 
+import io.github.uitests.AfterLoginBaseTest;
 import io.github.uitests.page.VeteranProfilePage;
 import io.github.uitests.page.WorkQueuePage;
-import io.github.uitests.AfterLoginBaseTest;
 import org.fluentlenium.core.annotation.Page;
 import org.junit.jupiter.api.BeforeEach;
 
