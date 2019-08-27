@@ -33,14 +33,13 @@ public class VeteranProfilePage extends FluentPage {
     public FluentWebElement genderElement;
 
     @FindBy(id = "id-gender-male-save-value")
-    public FluentWebElement genderMaleInput;
+    private FluentWebElement genderMaleInput;
 
     @FindBy(id = "id-gender-female-save-value")
-    public FluentWebElement gendeFemaleInput;
-
+    private FluentWebElement gendeFemaleInput;
 
     @FindBy(id = "id-gender-undifferentiated-save-value")
-    public FluentWebElement genderUndifferentiateIdnput;
+    private FluentWebElement genderUndifferentiateIdnput;
 
 
     public VeteranProfilePage updateNameWith(String firstName, String lastName) {
@@ -61,7 +60,7 @@ public class VeteranProfilePage extends FluentPage {
             case MALE:
                 genderMaleInput.click();
                 break;
-            case FEMAILE:
+            case FEMALE:
                 gendeFemaleInput.click();
                 break;
             case UNDIFFERENTIATED:
