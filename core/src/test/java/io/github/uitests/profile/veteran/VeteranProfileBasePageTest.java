@@ -18,6 +18,6 @@ public class VeteranProfileBasePageTest extends AfterLoginBaseTest {
     protected void before() {
         super.before();
         workQueuePage.searchVeteran(veteranProvider.findVeteranFileNumber());
-        veteranProfilePage.isAt();
+        await().untilPage(veteranProfilePage).isAt();
     }
 }

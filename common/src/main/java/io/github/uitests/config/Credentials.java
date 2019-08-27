@@ -17,6 +17,31 @@ public class Credentials {
     private String appRole;
 
 
+    @Value("${useHttpProxy:false}")
+    private boolean useHttpProxy;
+    @Value("${hostsBehindProxy}")
+    private String hostsBehindProxy;
+    @Value("${proxyUsername}")
+    private String proxyUsername;
+    @Value("${proxyPassword}")
+    private String proxyPassword;
+
+    public boolean isUseHttpProxy() {
+        return useHttpProxy;
+    }
+
+    public String getHostsBehindProxy() {
+        return hostsBehindProxy;
+    }
+
+    public String getProxyUsername() {
+        return proxyUsername;
+    }
+
+    public String getProxyPassword() {
+        return proxyPassword;
+    }
+
     public String getAppUsername() {
         return appUsername;
     }

@@ -18,6 +18,6 @@ public class WorkQueuePageTest extends AfterLoginBaseTest {
     void testFindVeteran() {
         workQueuePage.isAt();
         workQueuePage.searchVeteran(veteranProvider.findVeteranFileNumber());
-        veteranProfilePage.isAt();
+        await().untilPage(veteranProfilePage).isAt();
     }
 }
