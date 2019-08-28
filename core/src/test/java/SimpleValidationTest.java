@@ -1,9 +1,9 @@
+import io.github.uitests.BaseTest;
 import org.assertj.core.api.Assertions;
-import org.fluentlenium.adapter.junit.jupiter.FluentTest;
 import org.junit.jupiter.api.Test;
 
 
-public class FirstTest extends FluentTest {
+public class SimpleValidationTest extends BaseTest {
     @Test
     void test() {
         goTo("https://duckduckgo.com");

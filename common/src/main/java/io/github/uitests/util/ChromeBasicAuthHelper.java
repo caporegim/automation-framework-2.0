@@ -1,6 +1,7 @@
 package io.github.uitests.util;
 
-import io.github.uitests.config.Credentials;
+import lombok.Getter;
+import lombok.Setter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -17,7 +18,6 @@ import java.net.URLDecoder;
  *
  * @author petr.metin
  */
-//@Component
 public class ChromeBasicAuthHelper {
     private static final String CHROME_MULTI_PASS_FOR_HTTP_BASIC_AUTHENTICATION = "chrome/MultiPass-for-HTTP-basic-authentication_v0.8.4.crx";
     private static final String UTF_8 = "UTF-8";
@@ -42,7 +42,7 @@ public class ChromeBasicAuthHelper {
     /**
      * Setup url and credentials in extension.
      */
-    public void configureAuth(WebDriver driver, Credentials credentials) {
+    public void configureAuth(WebDriver driver, AwsProperty credentials) {
         driver.get(EXTENSION_SETTINGS_PAGE);
         driver.findElement(By.id("url")).sendKeys(credentials.getHostsBehindProxy());
         driver.findElement(By.id("username")).sendKeys(credentials.getProxyUsername());
@@ -52,5 +52,13 @@ public class ChromeBasicAuthHelper {
 
     public File getExtensionFile() {
         return this.extensionFile;
+    }
+
+    @Getter
+    @Setter
+    public static class AwsProperty {
+        private CharSequence hostsBehindProxy;
+        private CharSequence proxyUsername;
+        private CharSequence proxyPassword;
     }
 }

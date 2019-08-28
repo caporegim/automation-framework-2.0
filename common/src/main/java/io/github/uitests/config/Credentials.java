@@ -9,6 +9,10 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("file:${user.dir}/module.properties")
 @Getter
 public class Credentials {
+    public static final String PROXY_USERNAME = "proxyUsername";
+    public static final String PROXY_PASSWORD = "proxyPassword";
+    public static final String HOSTS_BEHIND_PROXY = "hostsBehindProxy";
+
     @Value("${appUsername}")
     private String appUsername;
     @Value("${appPassword}")
@@ -27,4 +31,5 @@ public class Credentials {
     private String proxyUsername;
     @Value("${proxyPassword}")
     private String proxyPassword;
+
 }

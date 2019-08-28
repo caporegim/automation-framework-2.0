@@ -1,14 +1,16 @@
 package io.github.uitests;
 
+import static io.github.uitests.config.Credentials.HOSTS_BEHIND_PROXY;
+import static io.github.uitests.config.Credentials.PROXY_PASSWORD;
+import static io.github.uitests.config.Credentials.PROXY_USERNAME;
+
 import io.github.uitests.config.Config;
 import io.github.uitests.config.Credentials;
-import io.github.uitests.util.ChromeBasicAuthHelper;
+import io.github.uitests.fluentlenium.CustomChromeHttpProxyWebDriverFactory;
 import org.fluentlenium.adapter.junit.jupiter.FluentTest;
+import org.fluentlenium.configuration.CustomProperty;
+import org.fluentlenium.configuration.FluentConfiguration;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -16,28 +18,20 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = Config.class)
+@FluentConfiguration(webDriver = CustomChromeHttpProxyWebDriverFactory.CHROME_BEHIND_AWS_PROXY_FACTORY,
+        custom = {
+                @CustomProperty(name = PROXY_USERNAME, value = "egaito"),
+                @CustomProperty(name = PROXY_PASSWORD, value = "P@ssw0rdP@ssw0rd"),
+                @CustomProperty(name = HOSTS_BEHIND_PROXY, value = "va.gov")
+        })
 public abstract class BaseTest extends FluentTest {
+/*    todo
+        static {
+        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
+    }*/
+
     @Autowired
     Credentials credentials;
 
-    @Override
-    public WebDriver newWebDriver() {
-        if (credentials.isUseHttpProxy()) {
-            return createChromeWebDriverWithHttpProxy();
-        } else {
-            return super.newWebDriver();
-        }
-    }
-
-    protected WebDriver createChromeWebDriverWithHttpProxy() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        ChromeBasicAuthHelper chromeBasicAuthHelper = new ChromeBasicAuthHelper();
-        chromeOptions.addExtensions(chromeBasicAuthHelper.getExtensionFile());
-        WebDriver chromeDriver = new ChromeDriver(chromeOptions);
-        chromeBasicAuthHelper.configureAuth(chromeDriver, credentials);
-        if (Boolean.TRUE.equals(getEventsEnabled())) {
-            chromeDriver = new EventFiringWebDriver(chromeDriver);
-        }
-        return chromeDriver;
-    }
 }
