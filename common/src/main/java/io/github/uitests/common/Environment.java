@@ -107,4 +107,9 @@ public enum Environment {
 
     public abstract String getDbPassword(DatabaseConfig databaseConfig);
 
+    public String getAppUrl(String applicationSuffix) {
+        return String.format("https://www.%s.vbms.aide.oit.va.gov/%s", name().toLowerCase(), applicationSuffix);
+
+    }
+
 }

@@ -7,7 +7,7 @@ import org.fluentlenium.core.annotation.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class LoginPageTest extends BaseTest {
+public class LoginPageTest extends AbstractBaseTest {
 
     @Autowired
     private ModuleConfig moduleConfig;

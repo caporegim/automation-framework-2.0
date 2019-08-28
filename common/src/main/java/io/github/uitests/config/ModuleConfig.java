@@ -37,4 +37,7 @@ public class ModuleConfig {
     @Value("${environment}")
     private Environment environment;
 
+    @Value("${appUrlSuffix}")
+    private String appUrlSuffix;
+
 }
