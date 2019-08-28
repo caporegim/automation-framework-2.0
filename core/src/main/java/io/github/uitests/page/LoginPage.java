@@ -1,7 +1,7 @@
 package io.github.uitests.page;
 
 
-import io.github.uitests.config.Credentials;
+import io.github.uitests.config.ModuleConfig;
 import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.annotation.PageUrl;
 import org.fluentlenium.core.domain.FluentWebElement;
@@ -33,7 +33,7 @@ public class LoginPage extends FluentPage {
     private FluentWebElement loginButton;
 
 
-    public void loginWith(Credentials credentials) {
+    public void loginWith(ModuleConfig moduleConfig) {
         await().until(okButton).displayed();
 
         okButton.getWrappedElement().sendKeys(Keys.SPACE);
@@ -41,10 +41,10 @@ public class LoginPage extends FluentPage {
 
         loginUsingPassword.click();
         await().until(() -> stationId.displayed() && stationId.clickable());
-        stationId.fill().withText(credentials.getAppStationId());
-        usernamePopUp.fill().withText(credentials.getAppUsername());
-        passwordPopUp.fill().withText(credentials.getAppPassword());
-        profileIdPopUp.fill().withText(credentials.getAppRole());
+        stationId.fill().withText(moduleConfig.getAppStationId());
+        usernamePopUp.fill().withText(moduleConfig.getAppUsername());
+        passwordPopUp.fill().withText(moduleConfig.getAppPassword());
+        profileIdPopUp.fill().withText(moduleConfig.getAppRole());
         await().until(() -> loginButton.displayed() && loginButton.clickable());
 
         loginButton.getWrappedElement().sendKeys(Keys.ENTER);

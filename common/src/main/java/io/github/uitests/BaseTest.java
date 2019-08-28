@@ -1,11 +1,7 @@
 package io.github.uitests;
 
-import static io.github.uitests.config.Credentials.HOSTS_BEHIND_PROXY;
-import static io.github.uitests.config.Credentials.PROXY_PASSWORD;
-import static io.github.uitests.config.Credentials.PROXY_USERNAME;
-
 import io.github.uitests.config.Config;
-import io.github.uitests.config.Credentials;
+import io.github.uitests.config.ModuleConfig;
 import io.github.uitests.fluentlenium.CustomChromeHttpProxyWebDriverFactory;
 import org.fluentlenium.adapter.junit.jupiter.FluentTest;
 import org.fluentlenium.configuration.CustomProperty;
@@ -15,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import static io.github.uitests.config.ModuleConfig.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = Config.class)
@@ -32,6 +30,6 @@ public abstract class BaseTest extends FluentTest {
     }*/
 
     @Autowired
-    Credentials credentials;
+    ModuleConfig moduleConfig;
 
 }

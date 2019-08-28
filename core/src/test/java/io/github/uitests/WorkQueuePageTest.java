@@ -17,7 +17,7 @@ public class WorkQueuePageTest extends AfterLoginBaseTest {
     @Test
     void testFindVeteran() {
         workQueuePage.isAt();
-        workQueuePage.searchVeteran(veteranProvider.findVeteranFileNumber());
+        workQueuePage.searchVeteran(veteranProvider.provideVeteranFileNumber());
         await().untilPage(veteranProfilePage).isAt();
     }
 }

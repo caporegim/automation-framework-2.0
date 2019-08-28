@@ -1,6 +1,6 @@
 package io.github.uitests.fluentlenium;
 
-import io.github.uitests.config.Credentials;
+import io.github.uitests.config.ModuleConfig;
 import io.github.uitests.util.ChromeBasicAuthHelper;
 import org.fluentlenium.configuration.ConfigurationProperties;
 import org.fluentlenium.configuration.FactoryName;
@@ -22,9 +22,9 @@ public class CustomChromeHttpProxyWebDriverFactory implements WebDriverFactory {
         chromeOptions.addExtensions(chromeBasicAuthHelper.getExtensionFile());
         WebDriver chromeDriver = new ChromeDriver(chromeOptions);
         ChromeBasicAuthHelper.AwsProperty awsProperty = new ChromeBasicAuthHelper.AwsProperty();
-        awsProperty.setProxyUsername(configuration.getCustomProperty(Credentials.PROXY_USERNAME));
-        awsProperty.setProxyPassword(configuration.getCustomProperty(Credentials.PROXY_PASSWORD));
-        awsProperty.setHostsBehindProxy(configuration.getCustomProperty(Credentials.HOSTS_BEHIND_PROXY));
+        awsProperty.setProxyUsername(configuration.getCustomProperty(ModuleConfig.PROXY_USERNAME));
+        awsProperty.setProxyPassword(configuration.getCustomProperty(ModuleConfig.PROXY_PASSWORD));
+        awsProperty.setHostsBehindProxy(configuration.getCustomProperty(ModuleConfig.HOSTS_BEHIND_PROXY));
 
         chromeBasicAuthHelper.configureAuth(chromeDriver, awsProperty);
         return chromeDriver;
