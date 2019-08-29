@@ -30,6 +30,11 @@ public class CommonDefaultConfiguration extends ConfigurationDefaults {
     }
 
     @Override
+    public DriverLifecycle getDriverLifecycle() {
+        return DriverLifecycle.CLASS;
+    }
+
+    @Override
     public TriggerMode getScreenshotMode() {
         return TriggerMode.AUTOMATIC_ON_FAIL;
     }

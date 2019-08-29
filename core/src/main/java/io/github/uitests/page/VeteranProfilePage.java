@@ -30,7 +30,7 @@ public class VeteranProfilePage extends FluentPage {
     private FluentWebElement lastNameElement;
 
     @FindBy(id = "id-gender-birls-value")
-    public FluentWebElement genderElement;
+    private FluentWebElement genderElement;
 
     @FindBy(id = "id-gender-male-save-value")
     private FluentWebElement genderMaleInput;
@@ -80,4 +80,20 @@ public class VeteranProfilePage extends FluentPage {
     public FluentWebElement getLastNameElement() {
         return lastNameElement;
     }
+
+    public String waitAndGetSexText() {
+        await().until(genderElement).displayed();
+        return genderElement.text();
+    }
+
+    public String waitAndGetFirstNameText() {
+        await().until(firstNameElement).displayed();
+        return firstNameElement.text();
+    }
+
+    public String waitAndGetLastNameText() {
+        await().until(lastNameElement).displayed();
+        return lastNameElement.text();
+    }
+
 }

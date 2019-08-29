@@ -1,7 +1,7 @@
 package io.github.uitests.config;
 
 import io.github.uitests.common.Environment;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,11 +15,10 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(value = {"io.github.uitests"})
 //@PropertySources(@PropertySource("config.properties"))
-@Log
+@Slf4j
 public class Config {
     @Autowired
     private DatabaseConfig databaseConfig;
-
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
