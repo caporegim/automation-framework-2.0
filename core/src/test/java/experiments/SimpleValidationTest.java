@@ -1,8 +1,11 @@
+package experiments;
+
 import io.github.uitests.AbstractBaseTest;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-
+@Tag("experimental")
 public class SimpleValidationTest extends AbstractBaseTest {
     @Test
     void test() {
