@@ -9,6 +9,7 @@ import org.fluentlenium.configuration.FluentConfiguration;
 import org.fluentlenium.core.annotation.Page;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
+import org.openqa.selenium.JavascriptExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -39,6 +40,11 @@ public class AfterLoginBaseTest extends AbstractBaseTest {
     }
 
     private void beforeAll() {
+        events().beforeClickOn((element, driver) -> {
+            log.debug("adding border to element " + element);
+            JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+            javascriptExecutor.executeScript("arguments[0].style.border ='2px solid red'", element.getWrappedElement());
+        });
         log.info("before method invoked in " + getClass());
         goTo(loginPage);
         await().untilPage().isLoaded();

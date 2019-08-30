@@ -2,12 +2,14 @@ package io.github.uitests.profile.veteran;
 
 import io.github.uitests.common.Sex;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
 import static org.fluentlenium.assertj.FluentLeniumAssertions.assertThat;
 
+@DisplayName("Veteran profile test")
 public class VeteranProfileTest extends VeteranProfileBasePageTest {
 
     @Test
